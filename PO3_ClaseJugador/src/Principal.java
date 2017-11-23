@@ -135,8 +135,9 @@ public class Principal extends JFrame {
 		lblPuntuacion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblPuntuacion.setBounds(136, 298, 91, 16);
 		contentPane.add(lblPuntuacion);
-		// Campo de entrada de la puntuación del jugador
+		// Campo de salida de la puntuación del jugador
 		entrada_Puntuacion = new JTextField();
+		entrada_Puntuacion.setEditable(false);// no es editable , mostrara la puntacion del jugador
 		entrada_Puntuacion.setBounds(293, 295, 100, 22);
 		contentPane.add(entrada_Puntuacion);
 		entrada_Puntuacion.setColumns(10);
