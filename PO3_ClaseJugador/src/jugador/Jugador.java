@@ -68,9 +68,20 @@ public class Jugador {
 	public void setId(int id) {
 		this.id = id;
 	}
-	// Metodo que saca por consola las propiedades de Jugador
-	public String toString() {
-		return this.nombre+" "+this.apellido1+" "+this.apellido2+" "+this.edad;
-	}
+	
+	/*
+	 * -------------------------------------------------------
+	 * Metodos para validar las propiedades de objetos Jugador
+	 * -------------------------------------------------------
+	 * */
+	
+	
+	
+	
+	// Metodo que saca por consola las propiedades de un objeto Jugador
+		public String toString() {
+			return this.nombre+" "+this.apellido1+" "+this.apellido2+" "+this.edad;
+		}
+	
 
 }// FIN DE LA CLASE JUGADOR

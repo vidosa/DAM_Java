@@ -1,11 +1,7 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import jugador.Jugador;//Como jugador esta en otro paquete importo la Clase
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -15,6 +11,9 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//Importo el paquete donde se encuentra la clase Jugador
+import jugador.Jugador;
+
 public class Principal extends JFrame {
 	// Propiedades de la ventana principal
 	private JPanel contentPane;
@@ -22,38 +21,24 @@ public class Principal extends JFrame {
 	private JTextField entrada_Apellido1;
 	private JTextField entrada_Apellido2;
 	private JTextField entrada_Edad;
-	private JTextField entrada_Puntuacion;
-	private JTextField entrada_Id;
+	//private JTextField entrada_Puntuacion;
+	//private JTextField entrada_Id;
 	private JButton btn_aJugar;
-	private JTextField salida_Mensaje;	
-	//private static Jugador jugador1;
-	
+	private JTextField salida_Mensaje;
+	Jugador jugador1 = new Jugador();;
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 
-		// Instancio un objeto de la Clase Jugador
-		Jugador jugador1 = new Jugador();
-		jugador1.setNombre("Vicente");
-		jugador1.setApellido1("Doceda");
-		jugador1.setApellido2("Sanchis");
-		jugador1.setEdad(50);
-		// Muestra los datos del jugador por consola
-		System.out.println(jugador1.toString());
 		
-		// Se lanza la ventana creando un objeto frame de tipo Principal() y se hace visible.		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+		
 					Principal frame = new Principal();
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}// FIN DEL METODO QUE LANZA LA APLICACION
+				
+		}
+	
 
 	/**
 	 * Create the frame.
@@ -61,7 +46,7 @@ public class Principal extends JFrame {
 	public Principal() {
 
 		/*
-		 * ASPECTO DE LA VENTANA Y EL CONTENEDOR		 
+		 * ASPECTO DE LA VENTANA Y EL CONTENEDOR
 		 */
 
 		setFont(new Font("Calibri Light", Font.PLAIN, 60));
@@ -74,11 +59,11 @@ public class Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		/*
 		 * ETIQUETAS Y ENTRADAS DE TEXTO
 		 */
-		
+
 		// Etiqueta para el titulo del contenedor
 		JLabel lblTitulo = new JLabel("Datos del Jugador");
 		lblTitulo.setForeground(new Color(0, 0, 128));
@@ -93,9 +78,10 @@ public class Principal extends JFrame {
 		contentPane.add(lblNombre);
 		// Campo de entrada del nombre del jugador
 		entrada_Nombre = new JTextField();
-		entrada_Nombre.setBounds(293, 95, 278, 22);
+		entrada_Nombre.setBounds(293, 97, 278, 22);
 		contentPane.add(entrada_Nombre);
 		entrada_Nombre.setColumns(10);
+
 		// Etiqueta para el primer apellido del jugador
 		JLabel lblPrimerApellido = new JLabel("Primer Apellido");
 		lblPrimerApellido.setForeground(new Color(0, 0, 255));
@@ -107,6 +93,7 @@ public class Principal extends JFrame {
 		entrada_Apellido1.setColumns(10);
 		entrada_Apellido1.setBounds(293, 145, 278, 22);
 		contentPane.add(entrada_Apellido1);
+
 		// Etiqueta para el segundo apellido del jugador
 		JLabel lblSegundoApellido = new JLabel("Segundo Apellido");
 		lblSegundoApellido.setForeground(new Color(0, 0, 255));
@@ -118,6 +105,7 @@ public class Principal extends JFrame {
 		entrada_Apellido2.setColumns(10);
 		entrada_Apellido2.setBounds(293, 195, 278, 22);
 		contentPane.add(entrada_Apellido2);
+
 		// Etiqueta para la edad del jugador
 		JLabel lblEdad = new JLabel("Edad");
 		lblEdad.setForeground(new Color(0, 0, 255));
@@ -129,47 +117,52 @@ public class Principal extends JFrame {
 		entrada_Edad.setColumns(10);
 		entrada_Edad.setBounds(293, 245, 100, 22);
 		contentPane.add(entrada_Edad);
-		// Etiqueta para la puntuacion del jugador
-		JLabel lblPuntuacion = new JLabel("Puntuaci\u00F3n");
-		lblPuntuacion.setForeground(new Color(0, 0, 255));
-		lblPuntuacion.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPuntuacion.setBounds(136, 298, 91, 16);
-		contentPane.add(lblPuntuacion);
-		// Campo de salida de la puntuación del jugador
-		entrada_Puntuacion = new JTextField();
-		entrada_Puntuacion.setEditable(false);// no es editable , mostrara la puntacion del jugador
-		entrada_Puntuacion.setBounds(293, 295, 100, 22);
-		contentPane.add(entrada_Puntuacion);
-		entrada_Puntuacion.setColumns(10);
-		// Etiqueta para el Id del jugador
-		JLabel lblId = new JLabel("Id");
-		lblId.setForeground(new Color(0, 0, 255));
-		lblId.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblId.setBounds(136, 348, 56, 16);
-		contentPane.add(lblId);
-		// Campo de entrada del Id del jugador
-		entrada_Id = new JTextField();
-		entrada_Id.setBounds(293, 345, 100, 22);
-		contentPane.add(entrada_Id);
-		entrada_Id.setColumns(10);
+
+		/*
+		 * // Etiqueta para la puntuacion del jugador JLabel lblPuntuacion = new
+		 * JLabel("Puntuaci\u00F3n"); lblPuntuacion.setForeground(new Color(0, 0, 255));
+		 * lblPuntuacion.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		 * lblPuntuacion.setBounds(136, 298, 91, 16); contentPane.add(lblPuntuacion); //
+		 * Campo de salida de la puntuación del jugador entrada_Puntuacion = new
+		 * JTextField(); entrada_Puntuacion.setEditable(false);// no es editable ,
+		 * mostrara la puntacion del jugador entrada_Puntuacion.setBounds(293, 295, 100,
+		 * 22); contentPane.add(entrada_Puntuacion); entrada_Puntuacion.setColumns(10);
+		 */
+		/*
+		 * // Etiqueta para el Id del jugador JLabel lblId = new JLabel("Id");
+		 * lblId.setForeground(new Color(0, 0, 255)); lblId.setFont(new Font("Tahoma",
+		 * Font.PLAIN, 18)); lblId.setBounds(136, 348, 56, 16); contentPane.add(lblId);
+		 * // Campo de entrada del Id del jugador entrada_Id = new JTextField();
+		 * entrada_Id.setBounds(293, 345, 100, 22); contentPane.add(entrada_Id);
+		 * entrada_Id.setColumns(10);
+		 */
+
+		// Asignacion de datos
+		jugador1.setNombre(entrada_Nombre.getText());
+		jugador1.setApellido1(entrada_Apellido1.getText());
+		jugador1.setApellido2(entrada_Apellido2.getText());
+		/*String edadString = entrada_Edad.getText();
+		int edad = Integer.valueOf(edadString);
+		jugador1.setEdad(edad);*/
 		// Boton aJugar
 		btn_aJugar = new JButton("A Jugar");
 		btn_aJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//jugador1.setNombre(entrada_Nombre.getText());
-				//jugador1.setApellido1(entrada_Apellido1.getText());
-				//jugador1.setApellido2(entrada_Apellido2.getText());
+				// jugador1.setNombre(entrada_Nombre.getText());
+				// jugador1.setApellido1(entrada_Apellido1.getText());
+				// jugador1.setApellido2(entrada_Apellido2.getText());
 				/*
 				 * Convierto el valor de entrada_Edad que es un String en un Integer ya que el
 				 * atributo de la clase Jugador esta declarado como entero. Para ello creo una
 				 * variable intermedia edadString de tipo String y le asigon el valor del campo
 				 * de texto
 				 */
-				//String edadString = entrada_Edad.getText();
-				//int edad = Integer.valueOf(edadString);
-				//jugador1.setEdad(edad);
-				//salida_Mensaje.setText(" El jugador " + jugador1.getNombre() + " " + jugador1.getApellido1() + " "
-						//+ jugador1.getApellido2() + " " + jugador1.getEdad() + " puede empezar a jugar");
+				/*
+				 * String edadString = entrada_Edad.getText(); int edad =
+				 * Integer.valueOf(edadString); jugador1.setEdad(edad);
+				 */
+				salida_Mensaje.setText(" El jugador " + jugador1.getNombre() + " " + jugador1.getApellido1() + " "
+						+ jugador1.getApellido2() + " " + jugador1.getEdad() + " puede empezar a jugar");
 			}
 		});
 
