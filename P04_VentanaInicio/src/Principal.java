@@ -1,3 +1,9 @@
+/************************************************
+ * Lanza la aplicacion.
+ * Diseña los aspectos graficos
+ * Valida y guarda los datos en un objeto Jugador 
+ ***********************************************/
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -33,7 +39,7 @@ public class Principal extends JFrame {
 	Jugador jugador1 = new Jugador();
 
 	/**
-	 * Launch the application.
+	 * Lanza la aplicacion
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,11 +55,11 @@ public class Principal extends JFrame {
 	}// FIN DE MAIN
 
 	/**
-	 * Create the frame.
+	 * Crea el marco
 	 */
 	public Principal() {
-		
-		//Buena práctica: inicializar el objeto
+
+		// Buena práctica: inicializar el objeto
 		jugador1.setNombre("");
 		jugador1.setApellido1("");
 		jugador1.setApellido2("");
@@ -125,7 +131,7 @@ public class Principal extends JFrame {
 				jugador1.setNombre(entrada_Nombre.getText());
 			}
 		});
-		
+
 		// Campo de entrada del primer apellido del jugador
 		entrada_Apellido1 = new JTextField();
 		entrada_Apellido1.setColumns(10);
@@ -163,7 +169,7 @@ public class Principal extends JFrame {
 			 * En el listener de la edad del jugador se realizan varias acciones. Cuando se
 			 * hace intro se rellena el campo edad. Con el if se comprueba si la cadena de
 			 * texto es numerica llamando al metodo isNumeric. Si lo es, el String numerico
-			 * se convierte en numero(daria un error) ya el metodo setEdad() espera un
+			 * se convierte en entro (daria un error) ya el metodo setEdad() espera un
 			 * entero, esto se consigue con el metodo parseInt() de la clase Integer. Con el
 			 * else, de no cumplirse el if, se rellena con una edad no posible.
 			 */
@@ -178,23 +184,23 @@ public class Principal extends JFrame {
 			}
 		});
 
-		// Salida de mensajes
+		// Configuracion salida de mensajes
 		salida_Mensaje = new JTextField();
-		// salida_Mensaje.setEditable(false);
+		salida_Mensaje.setEditable(false);
 		salida_Mensaje.setBounds(136, 491, 446, 130);
 		contentPane.add(salida_Mensaje);
 		salida_Mensaje.setColumns(10);
 
 		// Asignacion de datos
-		jugador1.setNombre(entrada_Nombre.getText());
+		/*jugador1.setNombre(entrada_Nombre.getText());
 		jugador1.setApellido1(entrada_Apellido1.getText());
-		jugador1.setApellido2(entrada_Apellido2.getText());
+		jugador1.setApellido2(entrada_Apellido2.getText());*/
 
 		/*
 		 * String edadString = entrada_Edad.getText(); int edad =
 		 * Integer.valueOf(edadString); jugador1.setEdad(edad);
 		 */
-
+		salida_Mensaje.setText(" CADA VEZ QUE INTRODUZCAS UN DATO PRESIONA ENTER");
 		// Boton aJugar
 		btn_aJugar = new JButton("A Jugar");
 		btn_aJugar.addActionListener(new ActionListener() {
@@ -210,8 +216,9 @@ public class Principal extends JFrame {
 					salida_Mensaje.setText("La edad no es correcta o falta. Pulse enter");
 
 				else
-					salida_Mensaje.setText("Nuevo Jugador:" + " " + jugador1.getNombre() + " " + jugador1.getApellido1()
-							+ " " + jugador1.getApellido2() + " " + jugador1.getEdad() + " puede comenzar a jugar");
+					salida_Mensaje.setText("Nuevo Jugador :" + " " + jugador1.getNombre() + " " + jugador1.getApellido1()
+							+ " " + jugador1.getApellido2() +  " de edad " + jugador1.getEdad()
+							+ " puede comenzar a jugar.");
 
 			}
 		});

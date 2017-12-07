@@ -1,4 +1,10 @@
+/******************************************
+ * Clase que recoge los datos de un jugador
+ *****************************************/
+
 package juego;
+
+import java.lang.invoke.SwitchPoint;
 
 public class Jugador {
 	// Propiedades o atributos de la Clase Jugador
@@ -14,7 +20,7 @@ public class Jugador {
 
 	}
 
-	// Constructor con parametros de la clase y estado inicial de un objeto Jugador
+	// Constructor con parametros
 	public Jugador(String nombre, String apellido1, String apellido2, int edad) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -59,16 +65,18 @@ public class Jugador {
 		return edad;
 	}
 
-	// Metodo para escribir edad
+	//Metodo para escribir edad
 	public void setEdad(int edad) {
-		//Impido que se introduzca un numero negativo
-		if (edad < 0) {
-			this.edad = 999;
-
-		} else {
-			this.edad = edad;
+		// Impido que se introduzca un numero negativo o una edad no correcta
+		if ((edad < 0) || (edad < 6) || (edad>105)) {			
+			this.edad = 999;			
+		}		
+		else {
+			this.edad = edad;			
 		}
 	}
+
+	
 	/*
 	 * // Metodo para leer puntuacion public int getPuntuacion() { return
 	 * puntuacion; }
@@ -117,9 +125,9 @@ public class Jugador {
 	public boolean sonEspacios1(String cad1) {
 		for (int i = 0; i < cad1.length(); i++)
 			if (cad1.charAt(i) != ' ')
-				return false;
+			return false;
 
-		return true;
+			return true;
 	}
 
 	// Metodo que imprime las propiedades de un objeto Jugador.
