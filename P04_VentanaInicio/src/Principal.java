@@ -29,7 +29,7 @@ public class Principal extends JFrame {
 	private JButton btn_aJugar;
 	private JTextField salida_Mensaje;
 
-	// Genero un jugador
+	// Genero un objeto jugador
 	Jugador jugador1 = new Jugador();
 
 	/**
@@ -52,7 +52,8 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-
+		
+		//Buena práctica: inicializar el objeto
 		jugador1.setNombre("");
 		jugador1.setApellido1("");
 		jugador1.setApellido2("");
@@ -134,8 +135,7 @@ public class Principal extends JFrame {
 		entrada_Apellido1.addActionListener(new ActionListener() {
 			// Presionando enter se rellena el primer apellido del jugador
 			public void actionPerformed(ActionEvent arg0) {
-				jugador1.setNombre(entrada_Apellido1.getText());
-
+				jugador1.setApellido1(entrada_Apellido1.getText());
 			}
 		});
 
@@ -146,11 +146,9 @@ public class Principal extends JFrame {
 		contentPane.add(entrada_Apellido2);
 		// Listener sobre el campo de texto entrada_Apellido2
 		entrada_Apellido2.addActionListener(new ActionListener() {
-			// Presionando enter se rellena el segundo apellido del jugador y se pasa al
-			// siguiente campo
+			// Presionando enter se rellena el segundo apellido del jugado
 			public void actionPerformed(ActionEvent arg0) {
-				jugador1.setNombre(entrada_Apellido2.getText());
-
+				jugador1.setApellido2(entrada_Apellido2.getText());
 			}
 		});
 
@@ -165,9 +163,9 @@ public class Principal extends JFrame {
 			 * En el listener de la edad del jugador se realizan varias acciones. Cuando se
 			 * hace intro se rellena el campo edad. Con el if se comprueba si la cadena de
 			 * texto es numerica llamando al metodo isNumeric. Si lo es, el String numerico
-			 * se convierte ya el metodo setEdad() espera un entero, esto se consigue con el
-			 * metodo parseInt() de la clase Integer. Con el else, de no cumplirse el if, se
-			 * rellena con una edad no posible.
+			 * se convierte en numero(daria un error) ya el metodo setEdad() espera un
+			 * entero, esto se consigue con el metodo parseInt() de la clase Integer. Con el
+			 * else, de no cumplirse el if, se rellena con una edad no posible.
 			 */
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -202,18 +200,18 @@ public class Principal extends JFrame {
 		btn_aJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				if (jugador1.getEdad() == 999)
-					salida_Mensaje.setText("La edad no es correcta o falta. Pulse enter");
-				else if (jugador1.sonEspacios1(jugador1.getNombre()))
+				if (jugador1.sonEspacios1(jugador1.getNombre()))
 					salida_Mensaje.setText("El nombre no es correcto o falta. Pulse enter");
 				else if (jugador1.sonEspacios1(jugador1.getApellido1()))
 					salida_Mensaje.setText("El primer apellido no es correcto o falta. Pulse enter");
 				else if (jugador1.sonEspacios1(jugador1.getApellido2()))
 					salida_Mensaje.setText("El segundo apellido no es correcto o falta. Pulse enter");
+				else if (jugador1.getEdad() == 999)
+					salida_Mensaje.setText("La edad no es correcta o falta. Pulse enter");
 
 				else
-					salida_Mensaje.setText("Nuevo Jugador" + jugador1.getNombre() + " " + jugador1.getApellido1() + " "
-							+ jugador1.getApellido2() + " " + jugador1.getEdad() + " puede comenzar a jugar");
+					salida_Mensaje.setText("Nuevo Jugador:" + " " + jugador1.getNombre() + " " + jugador1.getApellido1()
+							+ " " + jugador1.getApellido2() + " " + jugador1.getEdad() + " puede comenzar a jugar");
 
 			}
 		});

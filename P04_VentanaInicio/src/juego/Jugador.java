@@ -61,29 +61,25 @@ public class Jugador {
 
 	// Metodo para escribir edad
 	public void setEdad(int edad) {
-		this.edad = edad;
-	}
+		//Impido que se introduzca un numero negativo
+		if (edad < 0) {
+			this.edad = 999;
 
-	// Metodo para leer puntuacion
-	public int getPuntuacion() {
-		return puntuacion;
+		} else {
+			this.edad = edad;
+		}
 	}
-
-	// Metodo para escribir puntuacion
-	public void setPuntuacion(int puntuacion) {
-		this.puntuacion = puntuacion;
-	}
-
-	// Metodos para leer Id
-	public int getId() {
-		return id;
-	}
-
-	// Metodo para escribir Id
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	/*
+	 * // Metodo para leer puntuacion public int getPuntuacion() { return
+	 * puntuacion; }
+	 * 
+	 * // Metodo para escribir puntuacion public void setPuntuacion(int puntuacion)
+	 * { this.puntuacion = puntuacion; }
+	 * 
+	 * // Metodos para leer Id public int getId() { return id; }
+	 * 
+	 * // Metodo para escribir Id public void setId(int id) { this.id = id; }
+	 */
 	/*----Metodos para validar las propiedades de objetos Jugador----*/
 
 	/*
