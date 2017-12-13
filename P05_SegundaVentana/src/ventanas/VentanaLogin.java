@@ -225,7 +225,7 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 		
-		// Configuracion visual del jugador
+		// Configuracion visual del boton a jugar
 		btn_aJugar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_aJugar.setForeground(new Color(245, 245, 245));
 		btn_aJugar.setBackground(new Color(0, 0, 128));
