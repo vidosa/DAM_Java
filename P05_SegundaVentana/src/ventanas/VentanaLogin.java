@@ -213,7 +213,7 @@ public class VentanaLogin extends JFrame {
 					 * jugador.getEdad() + " puede comenzar a jugar.");
 					 */
 
-					jugador = new Jugador();
+					//jugador = new Jugador();
 					jugador.setNombre(entrada_Nombre.getText());
 
 					vJ.setJugador(jugador);
