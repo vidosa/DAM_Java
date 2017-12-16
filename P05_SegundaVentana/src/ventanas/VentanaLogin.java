@@ -219,7 +219,8 @@ public class VentanaLogin extends JFrame {
 					vJ.setJugador(jugador);
 					vJ.setVisible(true);
 					// Se cierra la ventana de login
-					referencia.dispose();
+					//referencia.dispose();
+					referencia.setVisible(false);
 				}
 
 			}
